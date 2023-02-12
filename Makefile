@@ -6,7 +6,7 @@
 #    By: tlegrand <tlegrand@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 14:39:06 by tlegrand          #+#    #+#              #
-#    Updated: 2023/02/12 15:56:24 by tlegrand         ###   ########.fr        #
+#    Updated: 2023/02/12 17:38:30 by tlegrand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,15 +79,11 @@ ${NAME}			:	${DIR_OBJS} ${OBJS}
 				@printf "$(GREEN_LIGHT)${NAME} created !\n$(END)"
 
 ${DIR_OBJS}%.o	:	${DIR_SRCS}%.c ${HEADER}
+				@printf "$(ORANGE)Making ${NAME}...\n$(END)"
 				@${CC} ${CFLAGS} -c $< -o $@
 
 ${DIR_OBJS}		:
 				@${MKDIR} $@
-
-
-#	==============================	MESSAGE	==============================	#
-msg_start	:
-			@printf "$(ORANGE)Making ${NAME}...\n$(END)"
 
 
 
