@@ -6,7 +6,7 @@
 /*   By: tlegrand <tlegrand@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 13:43:09 by tlegrand          #+#    #+#             */
-/*   Updated: 2023/02/12 13:04:50 by tlegrand         ###   ########.fr       */
+/*   Updated: 2023/02/26 19:56:13 by tlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,5 +101,10 @@ int		ft_putnbr_base(long int nbr, char *base);
 
 char	*get_next_line(int fd);
 char	*ft_self_append(char *s1, char const *s2);
+
+/*	advanced functions	*/
+void	ft_free2d(void **arr, int size);
+void	ft_free3d(void ***arr, int size3d, int *size2d);
+void	ft_close_pipe(int pipefd[2]);
 
 #endif
