@@ -6,7 +6,7 @@
 /*   By: tlegrand <tlegrand@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 11:48:49 by tlegrand          #+#    #+#             */
-/*   Updated: 2022/12/25 15:39:03 by tlegrand         ###   ########.fr       */
+/*   Updated: 2023/03/01 15:46:11 by tlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	while (n-- > 0)
+	while (s && n-- > 0)
 		*(unsigned char *)(s + n) = 0;
 }
