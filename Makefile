@@ -6,7 +6,7 @@
 #    By: tlegrand <tlegrand@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 14:39:06 by tlegrand          #+#    #+#              #
-#    Updated: 2023/03/01 15:44:49 by tlegrand         ###   ########.fr        #
+#    Updated: 2023/03/08 12:33:28 by tlegrand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -107,5 +107,6 @@ BLUE_LIGHT	=	\033[1;34m
 VIOLET		=	\033[1;35m
 CYAN		=	\033[1;36m
 WHITE		=	\033[1;37m
+END			=	\033[0m
 ERASE		=	\033[2K
 RERASE		=	\r\033[2K
