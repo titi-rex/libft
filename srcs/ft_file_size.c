@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_file_size.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlegrand <tlegrand@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/09 15:58:00 by tlegrand          #+#    #+#             */
-/*   Updated: 2023/03/20 17:18:42 by tlegrand         ###   ########.fr       */
+/*   Created: 2023/02/10 15:56:31 by tlegrand          #+#    #+#             */
+/*   Updated: 2023/03/25 13:21:51 by tlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+/**
+ * @brief give number of char in file
+ * 
+ * @param pathname pathname of file
+ * @return int 
+ */
+int	ft_file_size(char *pathname)
 {
-	size_t	i;
-	size_t	n;
+	int		fd;
+	int		size;
+	char	buff;
 
-	i = 0;
-	n = ft_strlen(needle);
-	if (n == 0)
-		return ((char *) haystack);
-	while (haystack[i] && i + n <= len)
-	{
-		if (!ft_strncmp(&haystack[i], needle, n))
-			return ((char *) &haystack[i]);
-		i++;
-	}
-	return (NULL);
+	fd = open(pathname, O_RDONLY);
+	if (fd == -1)
+		return (perror("Error "), -1);
+	size = 1;
+	while (read(fd, &buff, 1))
+		size++;
+	close(fd);
+	return (size);
 }

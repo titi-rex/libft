@@ -1,31 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_print_tab.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlegrand <tlegrand@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/09 15:58:00 by tlegrand          #+#    #+#             */
-/*   Updated: 2023/03/20 17:18:42 by tlegrand         ###   ########.fr       */
+/*   Created: 2023/03/30 18:26:20 by tlegrand          #+#    #+#             */
+/*   Updated: 2023/03/30 18:30:14 by tlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+void	ft_print_tab2d_char(char **tab)
 {
-	size_t	i;
-	size_t	n;
+	int	i;
 
 	i = 0;
-	n = ft_strlen(needle);
-	if (n == 0)
-		return ((char *) haystack);
-	while (haystack[i] && i + n <= len)
+	if (!tab)
+		return ((void) ft_putstr_fd("tab NULL\n", 2));
+	while (tab[i])
 	{
-		if (!ft_strncmp(&haystack[i], needle, n))
-			return ((char *) &haystack[i]);
+		ft_putstr_fd(tab[i], 1);
 		i++;
 	}
-	return (NULL);
+}
+
+void	ft_print_tab_int(int *tab, int size)
+{
+	int	i;
+
+	i = 0;
+	if (!tab)
+		return ((void) ft_putstr_fd("tab NULL\n", 2));
+	while (i < size)
+	{
+		ft_putnbr_fd(tab[i], 1);
+		i++;
+	}
 }

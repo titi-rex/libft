@@ -6,7 +6,7 @@
 /*   By: tlegrand <tlegrand@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 13:43:09 by tlegrand          #+#    #+#             */
-/*   Updated: 2023/03/01 15:41:22 by tlegrand         ###   ########.fr       */
+/*   Updated: 2023/03/30 18:24:05 by tlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <unistd.h>
 # include <limits.h>
 # include <stdarg.h>
+# include <fcntl.h>
+# include <stdio.h>
 # ifndef OPEN_MAX
 #  define OPEN_MAX 1024
 # endif
@@ -25,15 +27,19 @@
 
 /*	char functions	*/
 int		ft_isdigit(int c);
+int		ft_str_isdigit(char *str);
 int		ft_isalpha(int c);
 int		ft_isalnum(int c);
+int		ft_str_isalnum(char *str);
 int		ft_isascii(int c);
 int		ft_isprint(int c);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
+int		ft_count_char(char *str, char c);
 
 /*	conversion functions	*/
 int		ft_atoi(const char *str);
+int		ft_atoi_base(char *str, char *base);
 char	*ft_itoa(int n);
 
 /*	memory functions	*/
@@ -49,16 +55,21 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
 char	*ft_strdup(const char *s1);
+char	*ft_strndup(char *src, int n);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strerase_end(char *str, char *end);
 char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strjoin3(char const *s1, char const *s2, char const *s3);
+char	*ft_multijoin(int n, ...);
 char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
-void	ft_freesplit(char **split);
+int		ft_path_splitlen(char **split);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 
 /*	string search & compare functions	*/
 size_t	ft_strlen(const char *s);
+size_t	ft_strlen2(const char *s);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
@@ -69,6 +80,7 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
+
 
 /*	list functions and struct	*/
 typedef struct s_list
@@ -103,8 +115,18 @@ char	*get_next_line(int fd);
 char	*ft_self_append(char *s1, char const *s2);
 
 /*	advanced functions	*/
-void	ft_free2d(void **arr, int size);
-void	ft_free3d(void ***arr, int size3d, int *size2d);
+void	*ft_free2d(void **arr, int size);
+void	*ft_free3d(void ***arr, int size3d, int *size2d);
 void	ft_close_pipe(int pipefd[2]);
+int		ft_file_size(char *pathname);
+int		ft_close_secure(int fd);
+void	*ft_free_secure(void *ptr);
+
+/*		to_add	*/
+void	ft_print_tab2d_char(char **tab);
+void	ft_print_tab_int(int *tab, int size);
+
+
+
 
 #endif

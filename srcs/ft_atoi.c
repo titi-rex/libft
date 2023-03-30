@@ -6,7 +6,7 @@
 /*   By: tlegrand <tlegrand@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 15:30:13 by tlegrand          #+#    #+#             */
-/*   Updated: 2023/03/01 15:45:34 by tlegrand         ###   ########.fr       */
+/*   Updated: 2023/03/04 16:51:36 by tlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ int	ft_atoi(const char *str)
 
 	res = 0;
 	sign = 1;
-	if (!str)
-		return (0);
 	while (*str == ' ' || (*str >= 9 && *str <= 13))
 		str++;
 	if (*str == '+' || *str == '-')

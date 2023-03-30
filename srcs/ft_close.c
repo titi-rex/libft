@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_close.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lboudjem <lboudjem@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tlegrand <tlegrand@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 15:58:38 by tlegrand          #+#    #+#             */
-/*   Updated: 2023/03/09 12:22:26 by lboudjem         ###   ########.fr       */
+/*   Created: 2023/03/30 18:19:00 by tlegrand          #+#    #+#             */
+/*   Updated: 2023/03/30 18:20:54 by tlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+int	ft_close_secure(int fd)
 {
-	size_t	i;
+	if (fd != -1)
+		if (close(fd))
+			perror("Error ");
+	return (-1);
+}
 
-	i = 0;
-	if (dstsize)
-	{
-		while (i < dstsize - 1 && src[i])
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[i] = 0;
-	}
-	while (src[i])
-		i++;
-	return (i);
+void	ft_close_pipe(int pipefd[2])
+{
+	if (pipefd[0] != -1)
+		close(pipefd[0]);
+	pipefd[0] = -1;
+	if (pipefd[1] != -1)
+		close(pipefd[1]);
+	pipefd[1] = -1;
 }

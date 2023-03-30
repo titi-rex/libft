@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strerase_end.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lboudjem <lboudjem@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tlegrand <tlegrand@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 15:58:38 by tlegrand          #+#    #+#             */
-/*   Updated: 2023/03/09 12:22:26 by lboudjem         ###   ########.fr       */
+/*   Created: 2023/03/20 16:07:52 by tlegrand          #+#    #+#             */
+/*   Updated: 2023/03/20 18:51:34 by tlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+char	*ft_strerase_end(char *str, char *end)
 {
-	size_t	i;
+	char	*tmp;
 
-	i = 0;
-	if (dstsize)
-	{
-		while (i < dstsize - 1 && src[i])
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[i] = 0;
-	}
-	while (src[i])
-		i++;
-	return (i);
+	if (!end)
+		return (str);
+	tmp = ft_strndup(str, ft_strlen2(str) - ft_strlen2(end));
+	free(str);
+	return (tmp);
 }

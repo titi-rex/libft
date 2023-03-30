@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lboudjem <lboudjem@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tlegrand <tlegrand@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 15:58:38 by tlegrand          #+#    #+#             */
-/*   Updated: 2023/03/09 12:22:26 by lboudjem         ###   ########.fr       */
+/*   Created: 2023/03/10 14:19:01 by lboudjem          #+#    #+#             */
+/*   Updated: 2023/03/23 13:40:33 by tlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+char	*ft_strndup(char *src, int n)
 {
-	size_t	i;
+	int		tmp;
+	char	*cpy;
 
-	i = 0;
-	if (dstsize)
+	cpy = (char *)malloc((n + 1) * sizeof(char));
+	if (!cpy)
+		return (NULL);
+	tmp = 0;
+	while (src && src[tmp] && tmp < n)
 	{
-		while (i < dstsize - 1 && src[i])
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[i] = 0;
+		cpy[tmp] = src[tmp];
+		tmp++;
 	}
-	while (src[i])
-		i++;
-	return (i);
+	cpy[tmp] = '\0';
+	return (cpy);
 }

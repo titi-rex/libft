@@ -6,7 +6,7 @@
 /*   By: tlegrand <tlegrand@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 14:48:43 by tlegrand          #+#    #+#             */
-/*   Updated: 2022/12/25 15:39:03 by tlegrand         ###   ########.fr       */
+/*   Updated: 2023/03/10 15:10:08 by tlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,16 @@ size_t	ft_strlen(const char *s)
 
 	i = 0;
 	while (s[i])
+		i++;
+	return (i);
+}
+
+size_t	ft_strlen2(const char *s)
+{
+	size_t	i;
+
+	i = 0;
+	while (s && s[i])
 		i++;
 	return (i);
 }
