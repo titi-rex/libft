@@ -6,7 +6,7 @@
 /*   By: tlegrand <tlegrand@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:40:09 by tlegrand          #+#    #+#             */
-/*   Updated: 2022/12/25 15:48:36 by tlegrand         ###   ########.fr       */
+/*   Updated: 2023/03/30 19:52:59 by tlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static size_t	ft_strlen_secure(const char *s)
 	return (i);
 }
 
-char	*ft_self_append(char *self, char const *to_append)
+char	*ft_strappend(char *self, char *to_append)
 {
 	size_t	len_s;
 	size_t	len_ta;

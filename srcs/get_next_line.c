@@ -6,7 +6,7 @@
 /*   By: tlegrand <tlegrand@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:40:14 by tlegrand          #+#    #+#             */
-/*   Updated: 2023/01/20 20:09:38 by tlegrand         ###   ########.fr       */
+/*   Updated: 2023/03/30 19:15:15 by tlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	ft_fill_buff(char **s_buff, int fd)
 		if (!len)
 			break ;
 		read_buff[len] = '\0';
-		*s_buff = ft_self_append(*s_buff, read_buff);
+		*s_buff = ft_strappend(*s_buff, read_buff);
 		if (!*s_buff)
 			return (1);
 		if (!len)

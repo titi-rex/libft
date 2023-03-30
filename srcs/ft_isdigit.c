@@ -6,7 +6,7 @@
 /*   By: tlegrand <tlegrand@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 13:28:57 by tlegrand          #+#    #+#             */
-/*   Updated: 2023/03/24 23:05:52 by tlegrand         ###   ########.fr       */
+/*   Updated: 2023/03/30 18:43:07 by tlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ int	ft_str_isdigit(char *str)
 	while (*str && ft_isdigit(*str))
 		str++;
 	if (*str)
-		return (1);
-	return (0);
+		return (0);
+	return (1);
 }

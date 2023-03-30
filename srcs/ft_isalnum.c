@@ -6,7 +6,7 @@
 /*   By: tlegrand <tlegrand@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 13:55:00 by tlegrand          #+#    #+#             */
-/*   Updated: 2023/03/25 19:07:33 by tlegrand         ###   ########.fr       */
+/*   Updated: 2023/03/30 18:43:28 by tlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ int	ft_str_isalnum(char *str)
 	while (*str && ft_isalnum(*str))
 		str++;
 	if (*str)
-		return (1);
-	return (0);
+		return (0);
+	return (1);
 }
