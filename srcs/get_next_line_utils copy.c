@@ -6,62 +6,43 @@
 /*   By: tlegrand <tlegrand@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:40:09 by tlegrand          #+#    #+#             */
-/*   Updated: 2023/03/30 23:44:59 by tlegrand         ###   ########.fr       */
+/*   Updated: 2023/03/30 19:52:59 by tlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-char	*ft_strchr2(const char *s, int c)
+static size_t	ft_strlen_secure(const char *s)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	c = c % 256;
-	while (*(s + i) != (char)c && *(s + i) != 0)
+	if (!s)
+		return (i);
+	while (s[i])
 		i++;
-	if (*(s + i) == (char)c)
-		return ((char *)(s + i));
-	return (NULL);
+	return (i);
 }
 
-size_t	ft_strlcat2(char *dst, char *src, size_t start)
+char	*ft_strappend(char *self, char *to_append)
 {
-	size_t	j;
+	size_t	len_s;
+	size_t	len_ta;
+	char	*new_str;
 
-	j = 0;
-	while (src[j] && src[j] != '\n')
+	if (!self && !to_append)
+		return (NULL);
+	len_s = ft_strlen_secure(self);
+	len_ta = ft_strlen_secure(to_append);
+	new_str = (char *)malloc((len_s + len_ta + 1) * sizeof(char));
+	if (new_str)
 	{
-		dst[start + j] = src[j];
-		j++;
+		if (self)
+			ft_strlcpy(new_str, self, len_s + 1);
+		if (to_append)
+			ft_strlcpy(new_str + len_s, to_append, len_ta + 1);
 	}
-	if (src[j] == '\n')
-	{
-
-		dst[start + j] = src[j];
-		j++;
-	}
-	dst[start + j] = '\0';
-	return (start + j);
-}
-
-char	*ft_refresh(char *s_buff)
-{
-	char	*ptr;
-	int		len;
-
-	ptr = ft_strchr(s_buff, '\n');
-	len = 0;
-	while (*ptr && len < BUFFER_SIZE)
-	{
-		*(s_buff + len) = *ptr;
-		len++;
-		ptr++;
-	}
-	while (len < BUFFER_SIZE)
-	{
-		*(s_buff + len) = 0;
-		len++;
-	}
-	return (s_buff);
+	if (self)
+		free(self);
+	return (new_str);
 }

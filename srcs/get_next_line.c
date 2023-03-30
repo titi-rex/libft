@@ -6,93 +6,132 @@
 /*   By: tlegrand <tlegrand@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:40:14 by tlegrand          #+#    #+#             */
-/*   Updated: 2023/03/30 19:15:15 by tlegrand         ###   ########.fr       */
+/*   Updated: 2023/03/31 00:20:53 by tlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-static int	ft_fill_buff(char **s_buff, int fd)
+static size_t	ft_strlen_s(const char *s)
 {
-	char	read_buff[BUFFER_SIZE + 1];
+	size_t	i;
+
+	i = 0;
+	while (s && s[i])
+		i++;
+	return (i);
+}
+
+static char	*ft_strchr2(const char *s, int c)
+{
+	int	i;
+
+	i = 0;
+	c = c % 256;
+	while (*(s + i) != (char)c && *(s + i) != 0)
+		i++;
+	if (*(s + i) == (char)c)
+		return ((char *)(s + i));
+	return (NULL);
+}
+
+size_t	ft_strlcat2(char *dst, char *src, size_t start)
+{
+	size_t	j;
+
+	j = 0;
+	//printf("strlcat2.start\n");
+	while (src && src[j] && src[j] != '\n')
+	{
+		//printf("strlcat2.src[%ld] = :%c:\t", j, src[j]);
+		dst[start + j] = src[j];
+		j++;
+	}
+	//printf("strlcat2.cpy\n");
+	if (src && src[j] == '\n')
+	{
+
+		dst[start + j] = src[j];
+		j++;
+	}
+	dst[start + j] = '\0';
+	return (start + j);
+}
+
+char	*ft_refresh(char *s_buff)
+{
+	char	*ptr;
 	int		len;
 
-	while (!ft_strchr(*s_buff, '\n'))
+	ptr = ft_strchr(s_buff, '\n');
+	if (!ptr)
+		return (NULL);
+	len = 0;
+	while (*ptr && len < BUFFER_SIZE)
 	{
-		len = read(fd, read_buff, BUFFER_SIZE);
-		if (len == -1)
-		{
-			free(*s_buff);
-			*s_buff = NULL;
-			return (1);
-		}
-		if (!len)
-			break ;
-		read_buff[len] = '\0';
-		*s_buff = ft_strappend(*s_buff, read_buff);
-		if (!*s_buff)
-			return (1);
-		if (!len)
-			break ;
+		*(s_buff + len) = *ptr;
+		len++;
+		ptr++;
 	}
-	return (0);
+	len--;
+	while (len < BUFFER_SIZE)
+	{
+		*(s_buff + len) = 0;
+		len++;
+	}
+	return (s_buff);
 }
 
-static char	*get_line(char *s_buff)
+char	*ft_expand(char *line, size_t *size)
 {
-	char	*line;
-	size_t	i;
+	char	*new_line;
 
-	if (!s_buff || !*s_buff)
-		return (NULL);
-	i = 0;
-	while (s_buff[i] && s_buff[i] != '\n')
-		i++;
-	if (s_buff[i] == '\n')
-		i++;
-	line = ft_substr(s_buff, 0, i);
-	return (line);
-}
-
-static char	*get_stock(char *s_buff)
-{
-	size_t	i;
-	char	*new;
-
-	if (!s_buff)
-		return (NULL);
-	i = 0;
-	while (s_buff[i] && s_buff[i] != '\n')
-		i++;
-	if (!s_buff[i])
-	{
-		free(s_buff);
-		return (NULL);
-	}
-	if (s_buff[i] == '\n')
-		i++;
-	new = ft_substr(s_buff, i, ft_strlen(s_buff) - i);
-	free(s_buff);
-	return (new);
+	*size = *size * 2 + 1;
+	new_line = ft_calloc(*size, sizeof(char));
+	if (!new_line)
+		return (free(line), NULL);
+	//printf("expand.malloc\n");
+	ft_strlcat2(new_line, line, 0);
+	//printf("expand.strlcat2\n");
+	if (line)
+		free(line);
+	//printf("expand.new_line :%s:\n", new_line);
+	return (new_line);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*s_buff[OPEN_MAX];
+	static char	s_buff[OPEN_MAX][BUFFER_SIZE];
 	char		*line;
+	size_t		idx;
+	size_t		size;
+	int			n_read;
 
 	if (fd < 0 || BUFFER_SIZE < 1 || fd > OPEN_MAX)
 		return (NULL);
-	if (ft_fill_buff(&s_buff[fd], fd))
-		return (NULL);
-	line = get_line(s_buff[fd]);
-	if (!line)
+	idx = 0;
+	line = NULL;
+	size = ft_strlen_s(line) + 1;
+	while (!ft_strchr2(s_buff[fd], '\n'))
 	{
-		if (s_buff[fd])
-			free(s_buff[fd]);
-		s_buff[fd] = NULL;
-		return (NULL);
+		//printf("idx = %ld\tsize = %ld\n", idx, size);
+		//printf("while.expand\n");
+		n_read = read(fd, s_buff[fd], BUFFER_SIZE);
+		if (n_read == -1)
+			return (free(line), NULL);
+		if (n_read == 0)
+			return (line);
+		if (idx == size - 1)
+			line = ft_expand(line, &size);
+		if (!line)
+			return (NULL);
+		//printf("buffer :%s:\n", s_buff[fd]);
+		idx = ft_strlcat2(line, s_buff[fd], idx);
+		//printf("line :%s:\n", line);
+		if (s_buff[fd][0] == '\0')
+			break ;
 	}
-	s_buff[fd] = get_stock(s_buff[fd]);
+	ft_refresh(s_buff[fd]);
+	printf("#%s#\n", s_buff[fd]);
 	return (line);
 }
