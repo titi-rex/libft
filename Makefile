@@ -6,7 +6,7 @@
 #    By: tlegrand <tlegrand@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 14:39:06 by tlegrand          #+#    #+#              #
-#    Updated: 2023/03/31 00:17:24 by tlegrand         ###   ########.fr        #
+#    Updated: 2023/03/31 13:10:54 by tlegrand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,7 @@ RM			=	rm -rf
 
 
 #	==============================	FLAGS	==============================	#
-CFLAGS		=	-Wall -Wextra -Werror -fsanitize=address -fsanitize=leak -g3
+CFLAGS		=	-Wall -Wextra -Werror -fsanitize=address -g3
 ARFLAGS		=	rcs
 
 TEST = test

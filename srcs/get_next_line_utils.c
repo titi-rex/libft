@@ -6,53 +6,52 @@
 /*   By: tlegrand <tlegrand@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:40:09 by tlegrand          #+#    #+#             */
-/*   Updated: 2023/03/30 23:44:59 by tlegrand         ###   ########.fr       */
+/*   Updated: 2023/03/31 14:34:54 by tlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-char	*ft_strchr2(const char *s, int c)
+char	*gnl_chr_nl(char *s)
 {
-	int	i;
-
-	i = 0;
-	c = c % 256;
-	while (*(s + i) != (char)c && *(s + i) != 0)
-		i++;
-	if (*(s + i) == (char)c)
-		return ((char *)(s + i));
+	if (!s)
+		return (NULL);
+	while (*s != '\n' && *s)
+		++s;
+	if (*s == '\n')
+		return (s);
 	return (NULL);
 }
 
-size_t	ft_strlcat2(char *dst, char *src, size_t start)
+size_t	gnl_strlcat(char *dst, char *src, size_t start)
 {
 	size_t	j;
 
 	j = 0;
-	while (src[j] && src[j] != '\n')
+	while (src && src[j] && src[j] != '\n')
 	{
 		dst[start + j] = src[j];
-		j++;
+		++j;
 	}
-	if (src[j] == '\n')
+	if (src && src[j] == '\n')
 	{
-
 		dst[start + j] = src[j];
-		j++;
+		++j;
 	}
 	dst[start + j] = '\0';
 	return (start + j);
 }
 
-char	*ft_refresh(char *s_buff)
+char	*gnl_refresh(char *s_buff)
 {
 	char	*ptr;
 	int		len;
 
-	ptr = ft_strchr(s_buff, '\n');
+	ptr = gnl_chr_nl(s_buff);
+	if (ptr)
+		ptr++;
 	len = 0;
-	while (*ptr && len < BUFFER_SIZE)
+	while (ptr && *ptr && len < BUFFER_SIZE)
 	{
 		*(s_buff + len) = *ptr;
 		len++;
@@ -64,4 +63,26 @@ char	*ft_refresh(char *s_buff)
 		len++;
 	}
 	return (s_buff);
+}
+
+char	*gnl_expand(char *line, size_t *size)
+{
+	char	*new_line;
+
+	*size = ((*size + BUFFER_SIZE) << 1) + 1;
+	new_line = malloc(*size * sizeof(char));
+	if (!new_line)
+		return (free(line), NULL);
+	gnl_strlcat(new_line, line, 0);
+	if (line)
+		free(line);
+	return (new_line);
+}
+
+char	*gnl_init(size_t *idx, size_t *size, int *n_read)
+{
+	*idx = 0;
+	*size = 1;
+	*n_read = 1;
+	return (NULL);
 }
