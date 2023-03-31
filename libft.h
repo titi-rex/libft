@@ -6,7 +6,7 @@
 /*   By: tlegrand <tlegrand@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 13:43:09 by tlegrand          #+#    #+#             */
-/*   Updated: 2023/03/31 13:41:13 by tlegrand         ###   ########.fr       */
+/*   Updated: 2023/03/31 21:09:33 by tlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,7 +192,7 @@ int		ft_printf(const char *str, ...);
 int		ft_putchar(char c);
 //	element of ft_printf, shouldn't be used, use ft_putchar_fd insteed
 int		ft_putstr(char *s);
-//	element of ft_printf, shouldn't be used, use ft_putchar_fd insteed
+//	element of ft_printf, shouldn't be used, use ft_putstr_fd insteed
 int		ft_putnbr(int n);
 //	take a int and a string as a base, print the number,
 //	return number of char printed
