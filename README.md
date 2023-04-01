@@ -1,5 +1,7 @@
 
 # libft
 
-libft including ft_printf and get_next_line <br>
-juste make it
+libft including: <br>
+- ft_printf <br>
+- get_next_line <br>
+- some other usefull function <br> 
