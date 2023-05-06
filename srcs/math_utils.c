@@ -1,18 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   math_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlegrand <tlegrand@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/25 17:58:02 by tlegrand          #+#    #+#             */
-/*   Updated: 2022/12/25 15:47:09 by tlegrand         ###   ########.fr       */
+/*   Created: 2023/05/03 15:37:45 by tlegrand          #+#    #+#             */
+/*   Updated: 2023/05/06 22:11:29 by tlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-int	ft_putchar(char c)
+int	ft_max(int a, int b)
 {
-	return (write(1, &c, 1));
+	if (a > b)
+		return (a);
+	return (b);
+}
+
+int	ft_min(int a, int b)
+{
+	if (a < b)
+		return (a);
+	return (b);
+}
+
+long int	ft_abs(long int a)
+{
+	if (a < 0)
+		return (-a);
+	return (a);
 }

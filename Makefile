@@ -6,7 +6,7 @@
 #    By: tlegrand <tlegrand@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 14:39:06 by tlegrand          #+#    #+#              #
-#    Updated: 2023/03/31 13:10:54 by tlegrand         ###   ########.fr        #
+#    Updated: 2023/05/06 22:18:25 by tlegrand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,9 +29,11 @@ LST_SRCS	= 	ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isprint.c ft_isascii.c \
 				ft_putchar_fd.c ft_putstr_fd.c ft_putnbr_fd.c ft_putendl_fd.c \
 				ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c \
 				ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c \
-				ft_printf.c ft_putchar.c ft_putstr.c ft_putnbr.c ft_putnbr_base.c \
+				ft_printf.c ft_printf_buffer.c ft_printf_extract_number.c ft_printf_get_flags.c ft_printf_get_value.c \
+				ft_printf_padding.c ft_printf_utils.c \
 				get_next_line.c get_next_line_utils.c \
-				ft_free.c ft_close.c ft_print_tab.c
+				ft_free.c ft_close.c ft_print_tab.c \
+				 math_utils.c
 SRCS		=	${addprefix ${DIR_SRCS}, ${LST_SRCS}}
 
 
@@ -54,7 +56,7 @@ RM			=	rm -rf
 CFLAGS		=	-Wall -Wextra -Werror -fsanitize=address -g3
 ARFLAGS		=	rcs
 
-TEST = test
+
 
 #	/*\/*\/*\/*\/*\/*\/*\/*\/*\/*\/*\/*\	RULES	/*\/*\/*\/*\/*\/*\/*\/*\/*\/*\/*\/*\	#
 .PHONY : all clean fclean re
@@ -62,9 +64,6 @@ TEST = test
 
 #	==============================	BASIC	==============================	#
 all		:	${NAME}
-
-${TEST}	:	${NAME}
-		${CC} ${CFLAGS} main.c ${NAME} -o ${TEST}
 
 clean	:
 		@${RM} ${DIR_OBJS}

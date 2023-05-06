@@ -6,7 +6,7 @@
 /*   By: tlegrand <tlegrand@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:40:14 by tlegrand          #+#    #+#             */
-/*   Updated: 2023/03/31 14:34:30 by tlegrand         ###   ########.fr       */
+/*   Updated: 2023/05/06 22:13:53 by tlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ char	*gnl_init(size_t *idx, size_t *size, int *n_read);
 
 char	*get_next_line(int fd)
 {
-	static char	s_buff[OPEN_MAX][BUFFER_SIZE + 1];
+	static char	s_buff[MAX_FD][BUFFER_SIZE + 1];
 	char		*line;
 	size_t		idx;
 	size_t		size;
 	int			n_read;
 
-	if (fd < 0 || BUFFER_SIZE < 1 || fd > OPEN_MAX)
+	if (fd < 0 || BUFFER_SIZE < 1 || fd > MAX_FD)
 		return (NULL);
 	line = gnl_init(&idx, &size, &n_read);
 	while (!gnl_chr_nl(line))
