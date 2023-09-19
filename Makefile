@@ -53,7 +53,7 @@ RM			=	rm -rf
 
 
 #	==============================	FLAGS	==============================	#
-CFLAGS		=	-Wall -Wextra -Werror -fsanitize=address -g3
+CFLAGS		=	-Wall -Wextra -Werror 
 ARFLAGS		=	rcs
 
 
