@@ -6,7 +6,7 @@
 #    By: tlegrand <tlegrand@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 14:39:06 by tlegrand          #+#    #+#              #
-#    Updated: 2023/05/06 22:18:25 by tlegrand         ###   ########.fr        #
+#    Updated: 2023/09/27 20:56:18 by tlegrand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,8 +72,8 @@ fclean	:	clean
 		@${RM} ${NAME}
 		@printf "$(GREEN)All clean !\n$(END)"
 
-re		:	fclean
-		@${MAKE} all
+re		:	fclean all
+
 
 
 #	==============================	COMPILATION	==============================	#

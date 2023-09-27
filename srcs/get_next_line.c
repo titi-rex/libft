@@ -6,14 +6,14 @@
 /*   By: tlegrand <tlegrand@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:40:14 by tlegrand          #+#    #+#             */
-/*   Updated: 2023/09/27 16:13:17 by tlegrand         ###   ########.fr       */
+/*   Updated: 2023/09/27 20:55:22 by tlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
 char	*gnl_chr_nl(char *s);
-size_t	gnl_strlcat(char *dst, char *src, size_t start);
+size_t	gnl_strlcat(char *dst, char *src, size_t start, size_t size);
 char	*gnl_refresh(char *s_buff);
 char	*gnl_expand(char *line, size_t *size);
 char	*gnl_init(size_t *idx, size_t *size, int *n_read);
@@ -36,13 +36,11 @@ int	get_next_line(int fd, char **line)
 			return (free(*line), 1);
 		else if (n_read == 0)
 			return (0);
-		printf("idx : %zu \t size : %zu \n", idx, size);
-
 		if (idx == size)
 			*line = gnl_expand(*line, &size);
 		if (!*line)
 			return (1);
-		idx = gnl_strlcat(*line, s_buff[fd], idx);
+		idx = gnl_strlcat(*line, s_buff[fd], idx, size);
 		gnl_refresh(s_buff[fd]);
 	}
 	return (0);
