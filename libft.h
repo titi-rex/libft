@@ -6,7 +6,7 @@
 /*   By: tlegrand <tlegrand@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 13:43:09 by tlegrand          #+#    #+#             */
-/*   Updated: 2023/09/20 13:24:58 by tlegrand         ###   ########.fr       */
+/*   Updated: 2023/09/27 22:12:54 by tlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -221,7 +221,7 @@ void		ft_print_tab_int(int *tab, int size);
 # endif
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 256
+#  define BUFFER_SIZE 4
 # endif
 
 //	take a fd, and a pptr, allocate memory and copy a line from fd inside
