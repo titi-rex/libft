@@ -6,7 +6,7 @@
 /*   By: tlegrand <tlegrand@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:40:09 by tlegrand          #+#    #+#             */
-/*   Updated: 2023/09/27 15:21:03 by tlegrand         ###   ########.fr       */
+/*   Updated: 2023/09/27 16:15:10 by tlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ char	*gnl_chr_nl(char *s)
 	return (NULL);
 }
 
-size_t	gnl_strlcat(char *dst, char *src, size_t start)
+size_t	gnl_strlcat(char *dst, char *src, size_t start, int size)
 {
 	size_t	j;
 
 	j = 0;
-	while (src && src[j] && src[j] != '\n')
+	while (src && src[j] && src[j] != '\n' && start + j < size)
 	{
 		dst[start + j] = src[j];
 		++j;

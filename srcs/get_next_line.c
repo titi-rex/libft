@@ -6,7 +6,7 @@
 /*   By: tlegrand <tlegrand@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:40:14 by tlegrand          #+#    #+#             */
-/*   Updated: 2023/09/27 15:19:28 by tlegrand         ###   ########.fr       */
+/*   Updated: 2023/09/27 16:13:17 by tlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ int	get_next_line(int fd, char **line)
 			return (free(*line), 1);
 		else if (n_read == 0)
 			return (0);
+		printf("idx : %zu \t size : %zu \n", idx, size);
+
 		if (idx == size)
 			*line = gnl_expand(*line, &size);
 		if (!*line)
