@@ -6,7 +6,7 @@
 /*   By: tlegrand <tlegrand@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:40:09 by tlegrand          #+#    #+#             */
-/*   Updated: 2023/03/31 14:34:54 by tlegrand         ###   ########.fr       */
+/*   Updated: 2023/09/27 15:21:03 by tlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,11 @@ char	*gnl_expand(char *line, size_t *size)
 {
 	char	*new_line;
 
-	*size = ((*size + BUFFER_SIZE) << 1) + 1;
-	new_line = malloc(*size * sizeof(char));
+	if (*size == 0)
+		*size = BUFFER_SIZE;
+	else
+		*size = *size << 1;
+	new_line = malloc((*size + 1) * sizeof(char));
 	if (!new_line)
 		return (free(line), NULL);
 	gnl_strlcat(new_line, line, 0);
@@ -82,7 +85,7 @@ char	*gnl_expand(char *line, size_t *size)
 char	*gnl_init(size_t *idx, size_t *size, int *n_read)
 {
 	*idx = 0;
-	*size = 1;
+	*size = 0;
 	*n_read = 1;
 	return (NULL);
 }
