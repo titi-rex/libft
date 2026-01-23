@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_get_flags.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tlegrand <tlegrand@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: lalegran <lalegran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:37:03 by tlegrand          #+#    #+#             */
-/*   Updated: 2023/05/06 22:08:05 by tlegrand         ###   ########.fr       */
+/*   Updated: 2025/12/02 14:13:21 by lalegran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ static int	get_specifier(int flags[4], char c)
 	if (!is_specifier(c))
 		return (1);
 	flags[3] = c;
-	if (flags[3] == 'p' || flags[3] == 'c' || flags[3] == 's' || \
-		flags[3] == '%')
+	if (flags[3] == 'p' || flags[3] == 'c' || flags[3] == 's'
+		|| flags[3] == '%')
 		if (flags[0] & ZERO)
 			flags[0] ^= ZERO;
 	if (flags[3] == 'p')

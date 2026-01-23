@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tlegrand <tlegrand@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: lalegran <lalegran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 13:43:09 by tlegrand          #+#    #+#             */
-/*   Updated: 2023/09/27 22:12:54 by tlegrand         ###   ########.fr       */
+/*   Updated: 2025/12/04 11:41:58 by lalegran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <stdarg.h>
 # include <fcntl.h>
 # include <stdio.h>
+
+# include "doubly_linked_list.h"
 
 # ifndef SIZE_MAX
 #  define SIZE_MAX 18446744073709551615UL
@@ -67,6 +69,9 @@ char		*ft_itoa(int n);
 //	take a number of element and a size of element, allocate memory and set it 
 //	to 0, return pointer to memory
 void		*ft_calloc(size_t count, size_t size);
+//	take a ptr his size and a size, allocate size memory, free ptr, bzero mem
+//	cpy mem and return a new ptr
+void		*ft_recalloc(void *ptr, size_t size, size_t target);
 //	take a pointer, a value interpreted as an unsigned char, a len, set  
 //	memory from ptr to value for len element, return ptr to memory
 void		*ft_memset(void *b, int c, size_t len);
@@ -211,9 +216,9 @@ void		ft_putendl_fd(char *s, int fd);
 //	take a file descriptor fd and a number (int), write number in fd
 void		ft_putnbr_fd(int n, int fd);
 //	take a NULL terminated char **, print it
-void		ft_print_tab2d_char(char **tab);
+void		ft_print_tab2d_char(char **t);
 //	take a int** tab and his size, print it
-void		ft_print_tab_int(int *tab, int size);
+void		ft_print_tab_int(int *t, int size);
 
 /*	####################	GNL and file	####################	*/
 # ifndef MAX_FD
@@ -261,9 +266,13 @@ long int	ft_abs(long int a);
 int			ft_max(int a, int b);
 // 	return min(a,b)
 int			ft_min(int a, int b);
+//	return max(a,b,c)
+int			ft_max3(int a, int b, int c);
+//	return min(a,b,c)
+int			ft_min3(int a, int b, int c);
 
 /*	####################	debug	####################	*/
 // print tab
-void		debug_print_tab(int *tab, int n);
+void		debug_print_tab(int *t, int n);
 
 #endif

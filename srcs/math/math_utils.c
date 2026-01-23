@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   math_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tlegrand <tlegrand@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: lalegran <lalegran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:37:45 by tlegrand          #+#    #+#             */
-/*   Updated: 2023/05/06 22:11:29 by tlegrand         ###   ########.fr       */
+/*   Updated: 2025/12/04 11:41:18 by lalegran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,24 @@ int	ft_min(int a, int b)
 	if (a < b)
 		return (a);
 	return (b);
+}
+
+int	ft_max3(int a, int b, int c)
+{
+	if (a >= b && b >= c)
+		return (a);
+	if (b > c)
+		return (b);
+	return (c);
+}
+
+int	ft_min3(int a, int b, int c)
+{
+	if (a <= b && b <= c)
+		return (a);
+	if (b < c)
+		return (b);
+	return (c);
 }
 
 long int	ft_abs(long int a)

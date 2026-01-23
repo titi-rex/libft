@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tlegrand <tlegrand@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: lalegran <lalegran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 19:43:06 by tlegrand          #+#    #+#             */
-/*   Updated: 2023/05/06 22:12:56 by tlegrand         ###   ########.fr       */
+/*   Updated: 2025/12/02 14:12:13 by lalegran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ static int	selector(t_print_buffer *p, const char **str, va_list ap)
 		w_len += write_buffer(p, '%');
 	else if (flags[3] == 'c' || flags[3] == 'd' || flags[3] == 'i')
 		get_int(p, ap, flags);
-	else if (flags[3] == 'x' || flags[3] == 'X' || flags[3] == 'u' || \
-		flags[3] == 'o' || flags[3] == 'b' || flags[3] == 'p')
+	else if (flags[3] == 'x' || flags[3] == 'X' || flags[3] == 'u'
+		|| flags[3] == 'o' || flags[3] == 'b' || flags[3] == 'p')
 		get_uint(p, ap, flags);
 	else if (flags[3] == 's')
 		get_str(p, ap, flags);

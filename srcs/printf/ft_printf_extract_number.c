@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_extract_number.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tlegrand <tlegrand@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: lalegran <lalegran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 16:05:14 by tlegrand          #+#    #+#             */
-/*   Updated: 2023/05/06 22:04:02 by tlegrand         ###   ########.fr       */
+/*   Updated: 2025/12/02 14:13:01 by lalegran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int							write_buffer(t_print_buffer *p, char c);
 int							padding(t_print_buffer *p, char c, int size);
-unsigned long long int		ft_power_recursive(unsigned long long int nb, \
+unsigned long long int		ft_power_recursive(unsigned long long int nb,\
 	int power);
 
 static int	get_base(int flag)
@@ -45,7 +45,7 @@ int	ft_numlen(unsigned long long int num, int base)
 	return (len);
 }
 
-int	extract_number(t_print_buffer *p, unsigned long int number, \
+int	extract_number(t_print_buffer *p, unsigned long int number,\
 	int size, int flags[4])
 {
 	unsigned long long int	pow;

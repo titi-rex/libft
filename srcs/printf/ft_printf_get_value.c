@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_get_value.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tlegrand <tlegrand@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: lalegran <lalegran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:35:21 by tlegrand          #+#    #+#             */
-/*   Updated: 2023/05/06 22:13:34 by tlegrand         ###   ########.fr       */
+/*   Updated: 2025/12/02 14:13:34 by lalegran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	write_buffer(t_print_buffer *p, char c);
 int	write_buffer_str(t_print_buffer *p, char *str, int max);
 int	pad_adjust_right(t_print_buffer *p, int size, int sign, int flags[4]);
 int	pad_adjust_left(t_print_buffer *p, int size, int flags[4]);
-int	extract_number(t_print_buffer *p, unsigned long int number, int size, \
+int	extract_number(t_print_buffer *p, unsigned long int number, int size,\
 	int flags[4]);
 
 static int	get_sign(int flag[4], int d)
