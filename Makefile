@@ -11,9 +11,9 @@ root_dir := $(dir $(abspath $(firstword $(MAKEFILE_LIST))))
 ALL_SRC	:= $(subst $(root_dir), "", $(SRC))
 
 OBJ_DIR	= .build
-OBJ		= ${patsubst ${DIR_SRCS}%.c, ${OBJ_DIR}%.o, ${SRCS}}
+OBJ		= ${patsubst ${SRC_DIR}%.c, ${OBJ_DIR}%.o, ${ALL_SRC}}
 
 all: 
-	@echo "${root_dir}"
 	@echo "${ALL_SRC}"
+	@echo "${OBJ}"
 
