@@ -46,7 +46,6 @@ ${BIN_DIR}:
 
 # Utils
 e:
-	@echo "${SRC_DIR}"
 	@echo "${ALL_SRC}"
 	@echo "${OBJ}"
 
