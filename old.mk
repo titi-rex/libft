@@ -12,6 +12,7 @@
 
 
 
+# current := $(notdir $(patsubst %/,%,$(dir $(mk_file_path))))
 
 
 #	/*\/*\/*\/*\/*\/*\/*\/*\/*\/*\/*\/*\	PROJECT VARIABLES	/*\/*\/*\/*\/*\/*\/*\/*\/*\/*\/*\/*\	#
