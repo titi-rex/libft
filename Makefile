@@ -1,29 +1,19 @@
-# root directory
-root_dir	:= $(dir $(abspath $(firstword $(MAKEFILE_LIST))))
-
 uniq = $(if $1,$(firstword $1) $(call uniq,$(filter-out $(firstword $1),$1)))
 
 # Source directory
 SRC_DIR		= srcs/
-# Source list (empty at first)
-SRC	:=
-# Include list
-INC	:=
-
-# Include subdirectory sources.mk
-include ${SRC_DIR}sources.mk
+SRC_FILE = sources.mk
 
 
-INC	+= include/libft
+-include $(SRC_FILE)
 
-# All source files
-ALL_SRC	= $(addsuffix .c, $(subst $(root_dir),, $(SRC)))
-ALL_INC	= $(addsuffix .h, $(subst $(root_dir),, $(INC)))
-ALL_OBJ	= ${patsubst ${SRC_DIR}%.c,${OBJ_DIR}%.o, $(ALL_SRC)}
-SUBDIRS	= $(call uniq, $(dir $(ALL_OBJ)))
+INC	= include/libft
+
+OBJ	= ${patsubst ${SRC_DIR}%.c,${OBJ_DIR}%.o, $(SRC)}
+SUBDIRS	= $(call uniq, $(dir $(OBJ)))
 
 # CFlages
-IFLAGS	= $(addprefix -I, $(dir $(ALL_INC)))
+IFLAGS	= $(addprefix -I, $(dir $(INC)))
 
 # directories
 BUILD_DIR	= build/
@@ -32,7 +22,7 @@ BIN_DIR		= ${BUILD_DIR}bin/
 
 
 # General
-all: ${ALL_OBJ}
+all: ${OBJ}
 
 clean:
 	rm -rf ${OBJ_DIR}
@@ -43,12 +33,9 @@ fclean:
 re: clean all
 
 # Compilation
-.SECONDEXPANSION:
-${OBJ_DIR}%.o: ${SRC_DIR}%.c | $$(@D)
-	@echo $$^
-	cc $(IFLAGS) -c $< -o $@
+${OBJ_DIR}%.o: ${SRC_DIR}%.c $(SUBDIRS)
+	$(CC) $(IFLAGS) -c $< -o $@
 
-dir_guard=@$(MKDIR_P) $(@D)
 
 # Directory creation
 $(SUBDIRS):
@@ -57,9 +44,13 @@ $(SUBDIRS):
 ${BIN_DIR}:
 	mkdir -p ${BIN_DIR}
 
+PHONY: prep
+prep:
+	@./tools/mk-src.sh $(SRC_DIR) $(SRC_FILE)
+
 # Utils
 e:
-	@echo "${ALL_INC}"
-	@echo "${ALL_SRC}"
-	@echo "${ALL_OBJ}"
+	@echo "${INC}"
+	@echo "${SRC}"
+	@echo "${OBJ}"
 	@echo "$(call uniq, ${SUBDIRS})"

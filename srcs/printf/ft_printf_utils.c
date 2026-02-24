@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "libft.h"
 
 unsigned long long int	ft_power_recursive(unsigned long long int nb, int power)
 {

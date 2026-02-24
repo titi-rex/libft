@@ -10,13 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "libft.h"
 
 /**
  * @brief give number of char in file
- * 
+ *
  * @param pathname pathname of file
- * @return int 
+ * @return int
  */
 int	ft_file_size(char *pathname)
 {

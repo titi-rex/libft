@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "libft.h"
 
 int	write_buffer(t_print_buffer *p, char c);
 int	is_specifier(char c);

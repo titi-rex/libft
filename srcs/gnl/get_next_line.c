@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "libft.h"
 
 char	*gnl_chr_nl(char *s);
 size_t	gnl_strlcat(char *dst, char *src, size_t start, size_t size);

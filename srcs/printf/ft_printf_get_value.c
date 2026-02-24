@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "libft.h"
 
 int	ft_numlen(unsigned long long int num, int base);
 int	write_buffer(t_print_buffer *p, char c);
